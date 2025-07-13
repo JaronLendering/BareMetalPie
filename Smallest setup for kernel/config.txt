@@ -1,0 +1,8 @@
+# Run in 64-bit mode
+arm_64bit=1
+kernel=kernel.img
+enable_uart=1
+core_freq=250
+
+
+
