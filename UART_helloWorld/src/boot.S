@@ -1,61 +1,30 @@
-.text
+.section ".text.boot"  // Make sure the linker puts this at the start of the kernel image
 
-.global asm_start
-.global exc_stack
-.global supervisor_sp
+.global _start  // Execution starts here
 
-asm_start:
+_start:
+    // Check processor ID is zero (executing on main core), else hang
+    mrs     x1, mpidr_el1
+    and     x1, x1, #3
+    cbz     x1, 2f
+    // We're not on the main core, so hang in an infinite wait loop
+1:  wfe
+    b       1b
+2:  // We're on the main core!
 
-	# initialize Stack pointer for exception modes
-	mrs r4, cpsr
-	bic r4, r4, #0x1f
+    // Set stack to start below our code
+    ldr     x1, =_start
+    mov     sp, x1
 
-	#FIQ Mode
-	orr r3, r4, #0x11
-	msr cpsr_c, r3
-	ldr sp, =exc_stack
+    // Clean the BSS section
+    ldr     x1, =__bss_start     // Start address
+    ldr     w2, =__bss_size      // Size of the section
+3:  cbz     w2, 4f               // Quit loop if zero
+    str     xzr, [x1], #8
+    sub     w2, w2, #1
+    cbnz    w2, 3b               // Loop if non-zero
 
-	#IRQ Mode
-	orr r3, r4, #0x12
-	msr cpsr_c, r3
-	ldr sp, =exc_stack
-
-	#ABORT Mode
-	orr r3, r4, #0x17
-	msr cpsr_c, r3
-	ldr sp, =exc_stack
-
-	#UNDEFINED Mode
-	orr r3, r4, #0x1b
-	msr cpsr_c, r3
-	ldr sp, =exc_stack
-
-	# switch to supervisor mode
-	orr r3, r4, #0x13
-	msr cpsr_c, r3
-	
-	ldr sp, =temp_stack
-	
-	#
-	# Create the first stack frame.
-	#
-	mov fp, #0
-	mov ip, sp
-	push {fp, ip, lr, pc}
-	sub fp, ip, #4
-
-	bl not_main
-
-.globl dummy
-dummy:
-    bx lr
-
-	
-	.space 0x100
-temp_stack:
-
-	.space 1024
-exc_stack:
-
-supervisor_sp:
-	.space 4
+    // Jump to our main() routine in C (make sure it doesn't return)
+4:  bl      main
+    // In case it does return, halt the master core too
+    b       1b

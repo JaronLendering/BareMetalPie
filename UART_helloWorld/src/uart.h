@@ -1,4 +1,4 @@
-#define UART_BASE 0x7e215000
+#define UART_BASE 0xFE215000
 #define AUX_ENABLES       ((volatile unsigned int*)(UART_BASE + 0x04))
 #define AUX_MU_IO_REG     ((volatile unsigned int*)(UART_BASE + 0x40))
 #define AUX_MU_IER_REG    ((volatile unsigned int*)(UART_BASE + 0x44))
@@ -13,7 +13,7 @@
 #define AUX_MU_BAUD_REG   ((volatile unsigned int*)(UART_BASE + 0x68))
 
 void UART_init();
-void UART_receive();
+char UART_receive();
 void UART_send(unsigned int c);
 void UART_println(char* s);
 

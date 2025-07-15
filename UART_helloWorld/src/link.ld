@@ -1,18 +1,19 @@
-ENTRY(asm_start)
-
-MEMORY
-{
-	ram : ORIGIN = 0x8000, LENGTH = 0x10000000
-}
-
 SECTIONS
 {
-	.text : {
-		*(.text)
-	} > ram
-	
-	.data : { *(.data) } > ram
-	__bss_start__ = .;
-	.bss : { *(.bss) } > ram
-	__bss_end__ = .;	
+    . = 0x80000;     /* Kernel load address for AArch64 */
+    .text : { KEEP(*(.text.boot)) *(.text .text.* .gnu.linkonce.t*) }
+    .rodata : { *(.rodata .rodata.* .gnu.linkonce.r*) }
+    PROVIDE(_data = .);
+    .data : { *(.data .data.* .gnu.linkonce.d*) }
+    .bss (NOLOAD) : {
+        . = ALIGN(16);
+        __bss_start = .;
+        *(.bss .bss.*)
+        *(COMMON)
+        __bss_end = .;
+    }
+    _end = .;
+
+   /DISCARD/ : { *(.comment) *(.gnu*) *(.note*) *(.eh_frame*) }
 }
+__bss_size = (__bss_end - __bss_start)>>3;

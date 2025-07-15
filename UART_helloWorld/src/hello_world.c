@@ -3,9 +3,8 @@
 
 
 
-void not_main(void) {
-  while(1){
+void main(void) {
   UART_println("hello world");
-  }
+  while(1){}
 }
 

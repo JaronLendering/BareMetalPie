@@ -1,4 +1,4 @@
-#define GPIO_BASE 0x7200000
+#define GPIO_BASE 0xFE200000
 #define GPFSEL0                  ((volatile unsigned int*)(GPIO_BASE + 0x00))
 #define GPFSEL1                  ((volatile unsigned int*)(GPIO_BASE + 0x04))
 #define GPFSEL2                  ((volatile unsigned int*)(GPIO_BASE + 0x08))
