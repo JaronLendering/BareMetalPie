@@ -2,8 +2,7 @@
 
 ## Prerequisites
 This repository is made for the Raspberry Pi 4B, using
-
-<a href="https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads">aarch64-none-elf 14.3"</a>  as cross compiler, with Ubuntu as development operating system.
+<a href="https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads">aarch64-none-elf 14.3</a>  as cross compiler, with Ubuntu as development operating system.
 
 ## File Structure
 ### BareMinimum
