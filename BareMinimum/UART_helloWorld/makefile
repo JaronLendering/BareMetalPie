@@ -9,7 +9,7 @@ OBJS := $(OBJS:src/%.c=build/%.o) # Changes the extension from .c to .o
 ELF = build/kernel.elf # Constant for the elf file name
 IMG = build/kernel.img # Constant for the img file name
 LINKER = src/link.ld # Constant for the linker file location
-DEST = pi_files # Constant for the destination folder
+DEST = pi_files/ # Constant for the destination folder
 
 .PHONY: all clean final #To say that these are not files
 
@@ -36,7 +36,7 @@ clean: # remove the unnecessary files from the build folder
 
 final: $(STDFILES) $(IMG) # add the necessary files to the pi_files folder
 	mkdir -p pi_files
-	cp $^ $(DEST)/
+	cp $^ $(DEST)
 
 
 # Compiling commands executed by calling "make final"
