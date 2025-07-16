@@ -23,3 +23,4 @@ Use your serial reader software to read the UART cable.
 
 ## References
 All registers are explained in the <a href="https://datasheets.raspberrypi.com/bcm2711/bcm2711-peripherals.pdf">Broadcom 2711 documentation</a>. 
+Compiler options can be found in the <a href="https://gcc.gnu.org/onlinedocs/gcc/Option-Index.html"> gcc documentation</a>.
