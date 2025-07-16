@@ -21,24 +21,24 @@ void UART_init(){
 }
 
 char UART_receive(){
-  while(~(*AUX_MU_LSR_REG&0X01)){
+  while(~(*AUX_MU_LSR_REG&0X01)){ //check if there is a byte in the receive buffer
     __asm__ volatile("nop");
   }
-  char r = (char)*AUX_MU_IO_REG&255;
+  char r = (char)*AUX_MU_IO_REG&255; // read the byte from the receive buffer
   return r=='\r'?'\n':r;
 }
 
 void UART_send(unsigned int c){
-  while(!(*AUX_MU_LSR_REG&(1<<5))){
+  while(!(*AUX_MU_LSR_REG&(1<<5))){ // wait until the send buffer is empty
     __asm__ volatile("nop");
   }
-  *AUX_MU_IO_REG |= c&255;
+  *AUX_MU_IO_REG |= c&255; //set the corret byte to the character, which will be send over the UART lines.
 }
 
 void UART_println(char* s){
   while(*s){
-    UART_send(*s++);
+    UART_send(*s++); // send the current character from the array, and go to the next character.
   }
-   UART_send('\r');
-   UART_send('\n');
+   UART_send('\r'); // set the cursor the place 0 on the line
+   UART_send('\n'); // go to the next line
 }

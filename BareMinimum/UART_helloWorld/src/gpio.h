@@ -1,3 +1,8 @@
+// Defines all the GPIO related registers of the SoC
+/* Volatile is used because (some) values of registers can be changed by the hardware,
+   so the compiler shouldn't optimize the read actions (so it should read everytime it is called)
+*/ 
+
 #define GPIO_BASE 0xFE200000
 #define GPFSEL0                  ((volatile unsigned int*)(GPIO_BASE + 0x00))
 #define GPFSEL1                  ((volatile unsigned int*)(GPIO_BASE + 0x04))
