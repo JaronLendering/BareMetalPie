@@ -1,7 +1,7 @@
 # BareMetalPie
 
 ## Prerequisites
-This is the software and hardware used by me. Other software/hardware might or might not work.
+This is the software and hardware used. Other software/hardware might or might not work.
 - Raspberry Pi 4B
 - <a href="https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads">aarch64-none-elf 14.3</a> (The cross compiler)
 - Ubuntu (development OS)
