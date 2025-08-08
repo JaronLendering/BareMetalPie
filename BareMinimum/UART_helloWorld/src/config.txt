@@ -1,5 +1,5 @@
 arm_64bit=1
 enable_uart=1
-kernel=kernel.img # if you do not use this, the kernel has to be called "kernel8.img"
-core_freq=250 # A core frequency is set to keep a constant baudrate for the mini_uart
+kernel=kernel.img 
+core_freq=250 
 
