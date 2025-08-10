@@ -22,4 +22,5 @@ All registers are explained in the <a href="https://datasheets.raspberrypi.com/b
 Compiler options can be found in the <a href="https://gcc.gnu.org/onlinedocs/gcc/Option-Index.html"> gcc documentation</a>.
 
 ### Important Addition!
-The Broadcom 2711 documentation says that the GPIO memory adresses start at 0x7E200000 and that the UART memory adresses start at 0x7E215000. However, those are the memory adresses for the GPU. The CPU cannot access those so they are remapped to 0xFE200000 and 0xFE215000 respectively. Sadly, I have not been able to find a good source for this. If anyone has one, please say so!
+The Broadcom 2711 documentation says that the GPIO memory adresses start at 0x7E200000 and that the UART memory adresses start at 0x7E215000. However, those are the legacy memory adresses. The correct adresses are 0xFE200000 and 0xFE215000 respectively. This is mentioned in the Broadcom 2711 documentation, but can be hard to find. It is mentioned in "1.2.4 Legacy master addresses" 
+
