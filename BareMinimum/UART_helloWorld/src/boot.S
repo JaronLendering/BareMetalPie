@@ -22,7 +22,7 @@ hang: b hang // we are not in the main core, so we hang forever
     b.ge    3f                  // Jump to 3 if we have
     str     xzr, [x1]    // Store 8 bytes of zeros in x1. [] are to say that you mean the value of x1 instead of the adress of x1
     add     x1, x1, #8   // Add 8 bytes to the _bss pointer x1
-    b       2f           // loop until we have gone through every adress
+    b       2b           // loop until we have gone through every adress
 
 3:  bl      main         // Jump to our main() routine in C, if it returns jump to the next line (that happens because of the l in bl)
     b       hang         // If main returns, hang the core
