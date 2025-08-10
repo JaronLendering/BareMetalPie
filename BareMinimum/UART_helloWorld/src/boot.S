@@ -15,7 +15,7 @@ hang: b hang // we are not in the main core, so we hang forever
     ldr     x1, =_start //load the start position in x1
     mov     sp, x1 //set the stack pointer to the start of the program
 
-    // Clean the BSS section, stores non initialized variables at compile time. C expects it to be 0.
+    // Clean the BSS section, stores non initialized variables at compile time. C expects it to be 0, because all uninitialized variables have to be 0.
     ldr     x1, =__bss_start    // Start address
     ldr     x2, =__bss_end      // End address
 2:  cmp     x1,x2               // Check if we have gone through every adress
