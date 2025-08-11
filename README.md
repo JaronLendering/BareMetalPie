@@ -16,6 +16,8 @@ So a normal C compiler cannot be used.
 ### BareMinimum
 In BareMinimum, I will put highly documented code of simple implementations for a UART connection and a blinking ACT light. This can be used as an easy to understand starting point if you do not want to follow an exact tutorial. 
 
+### Advanced
+In Advanced, there are personal projects, not meant to be used as a tutorial, so they will be documented as much as I feel like documenting.
 
 ## General References
 All registers are explained in the <a href="https://datasheets.raspberrypi.com/bcm2711/bcm2711-peripherals.pdf">Broadcom 2711 documentation</a>.   
