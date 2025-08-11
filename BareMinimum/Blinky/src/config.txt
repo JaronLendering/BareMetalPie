@@ -1,5 +1,3 @@
 arm_64bit=1
-enable_uart=1
 kernel=kernel.img
-core_freq=250
 

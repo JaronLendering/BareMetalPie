@@ -1,19 +1,5 @@
-# UART_helloWorld
-UART_helloworld uses the UART serial connection to send "hello world" to your development machine.
-
-## Prerequisites
-These prerequisites are needed ontop of the general prerequisites for this repository
-- A TTL to USB cable (UART cable)
-- A serial reader (like "Putty" or "Minicom")
-
-## Hardware Overview
-Connect to TX wire to the RX pin and the RX wire to the TX pin.
-Connect the ground cable to the ground pin
-
-###  Hardware Specifications Breakdown
-The wires have to be connected in a crossed manner, because the output (TX) of the UART cable has to be connected to the 
-input (RX) of the Pi, and vice versa. The power wire is only needed if you want to power the Pi using the UART cable.
-The ground wire is used to reduce noice of over the RX and TX wires. 
+# Blinky
+Blinky makes the ACT light on the raspberry pi 4B blink
 
 ## pi_files
 pi_files is a folder with all files that have to be put on the sd card for the raspberry pi. It consists of 5 files.
@@ -28,6 +14,7 @@ pi_files is a folder with all files that have to be put on the sd card for the r
     This is an addition on start4.elf that helps starting up all the periphials.
 - kernel.img
     This is the file that we create, the kernel of the raspberry pi. It is the first file ran after the periphials are initialized. 
+
 
 ## Installation Procedure
 If you want to use <a href="https://www.gnu.org/software/make">make</a> (automation software), call "make final" in your terminal, while being in the UART_helloWorld folder.

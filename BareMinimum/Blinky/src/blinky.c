@@ -4,7 +4,7 @@
 #define GPIO_SEL4 (volatile unsigned int*) (GPIO_BASE + 0x10) //the start address where the function of some GPIO pins is decided
 #define GPIO_SET1 (volatile unsigned int*) (GPIO_BASE + 0x20) //The start address where some GPIO pins can be set high
 #define GPIO_CLR1 (volatile unsigned int*) (GPIO_BASE + 0x2c) //The start address where some GPIO pins can be set low
-#define GPIO_42 42 // GPIO pin connected to the ACT light of the raspberry pi 4B 
+#define GPIO_42 42 // GPIO pin connected to the ACT light of the raspberry pi 4B, it can be found in the Device Tree Source (.dts file) in the project root.
 #define GPIO_SEL4_BIT 6 //The bit that has to be set high, seen from the adress of GPIO_SEL4
 
 void main(void) {
@@ -16,11 +16,11 @@ void main(void) {
 
     while(1){
         *GPIO_CLR1 = 1 << (GPIO_42-32); //set pin 42 low
-        for(volatile int i = 0; i < 2000000; i++){ //Wait some time
+        for(int i = 0; i < 2000000; i++){ //Wait some time
                 __asm__ volatile("nop"); // makes sure that the empty while will not be optimized away.
         }
         *GPIO_SET1 = 1 << (GPIO_42-32); //set pin 42 high
-        for(volatile int i = 0; i < 2000000; i++){ //Wait some time
+        for(int i = 0; i < 2000000; i++){ //Wait some time
                 __asm__ volatile("nop"); // makes sure that the empty while will not be optimized away.
         }
 

@@ -14,7 +14,7 @@ So a normal C compiler cannot be used.
 
 ## File Structure
 ### BareMinimum
-In BareMinimum, I will put highly documented code of simple implementations for a UART connection and a blinking action light. This can be used as a easy to understand starting point if you do not want to follow an exact tutorial. 
+In BareMinimum, I will put highly documented code of simple implementations for a UART connection and a blinking ACT light. This can be used as an easy to understand starting point if you do not want to follow an exact tutorial. 
 
 
 ## General References
