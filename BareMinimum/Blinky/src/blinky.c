@@ -4,7 +4,7 @@
 #define GPIO_SEL4 (volatile unsigned int*) (GPIO_BASE + 0x10) //the start address where the function of some GPIO pins is decided
 #define GPIO_SET1 (volatile unsigned int*) (GPIO_BASE + 0x20) //The start address where some GPIO pins can be set high
 #define GPIO_CLR1 (volatile unsigned int*) (GPIO_BASE + 0x2c) //The start address where some GPIO pins can be set low
-#define GPIO_42 42 // GPIO pi set to the light 
+#define GPIO_42 42 // GPIO pin connected to the ACT light of the raspberry pi 4B 
 #define GPIO_SEL4_BIT 6 //The bit that has to be set high, seen from the adress of GPIO_SEL4
 
 void main(void) {
