@@ -1,0 +1,37 @@
+// Defines all the GPIO related registers of the SoC
+/* Volatile is used because (some) values of registers can be changed by the hardware,
+   so the compiler shouldn't optimize the read actions (so it should read everytime it is called)
+*/ 
+
+#define GPIO_BASE 0xFE200000
+#define GPFSEL0                  ((volatile unsigned int*)(GPIO_BASE + 0x00))
+#define GPFSEL1                  ((volatile unsigned int*)(GPIO_BASE + 0x04))
+#define GPFSEL2                  ((volatile unsigned int*)(GPIO_BASE + 0x08))
+#define GPFSEL3                  ((volatile unsigned int*)(GPIO_BASE + 0x0C))
+#define GPFSEL4                  ((volatile unsigned int*)(GPIO_BASE + 0x10))
+#define GPFSEL5                  ((volatile unsigned int*)(GPIO_BASE + 0x14))
+#define GPSET0                   ((volatile unsigned int*)(GPIO_BASE + 0x1C))
+#define GPSET1                   ((volatile unsigned int*)(GPIO_BASE + 0x20))
+#define GPCLR0                   ((volatile unsigned int*)(GPIO_BASE + 0x28))
+#define GPCLR1                   ((volatile unsigned int*)(GPIO_BASE + 0x2C))
+#define GPLEV0                   ((volatile unsigned int*)(GPIO_BASE + 0x34))
+#define GPLEV1                   ((volatile unsigned int*)(GPIO_BASE + 0x38))
+#define GPEDS0                   ((volatile unsigned int*)(GPIO_BASE + 0x40))
+#define GPEDS1                   ((volatile unsigned int*)(GPIO_BASE + 0x44))
+#define GPREN0                   ((volatile unsigned int*)(GPIO_BASE + 0x4C))
+#define GPREN1                   ((volatile unsigned int*)(GPIO_BASE + 0x50))
+#define GPFEN0                   ((volatile unsigned int*)(GPIO_BASE + 0x58))
+#define GPFEN1                   ((volatile unsigned int*)(GPIO_BASE + 0x5C))
+#define GPHEN0                   ((volatile unsigned int*)(GPIO_BASE + 0x64))
+#define GPHEN1                   ((volatile unsigned int*)(GPIO_BASE + 0x68))
+#define GPLEN0                   ((volatile unsigned int*)(GPIO_BASE + 0x70))
+#define GPLEN1                   ((volatile unsigned int*)(GPIO_BASE + 0x74))
+#define GPAREN0                  ((volatile unsigned int*)(GPIO_BASE + 0x7C))
+#define GPAREN1                  ((volatile unsigned int*)(GPIO_BASE + 0x80))
+#define GPAFEN0                  ((volatile unsigned int*)(GPIO_BASE + 0x88))
+#define GPAFEN1                  ((volatile unsigned int*)(GPIO_BASE + 0x8C))
+#define GPIO_PUP_PDN_CNTRL_REG0 ((volatile unsigned int*)(GPIO_BASE + 0xE4))
+#define GPIO_PUP_PDN_CNTRL_REG1 ((volatile unsigned int*)(GPIO_BASE + 0xE8))
+#define GPIO_PUP_PDN_CNTRL_REG2 ((volatile unsigned int*)(GPIO_BASE + 0xEC))
+#define GPIO_PUP_PDN_CNTRL_REG3 ((volatile unsigned int*)(GPIO_BASE + 0xF0))
+
