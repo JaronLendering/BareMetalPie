@@ -14,7 +14,7 @@ LINKER = startup/link.ld
 DEST = pi_files/ 
 VPATH := src:utils:startup
 
-.PHONY: all clean final prepare
+.PHONY: all clean final prepare remove
 
 all:$(IMG) 
 
@@ -35,9 +35,12 @@ $(ELF): $(OBJS) #link the .c and the .s files in 1 file, the .elf file
 $(IMG): $(ELF) # create a binary file form the .elf file
 	$(COBJ) $^ -O binary $(IMG)
 
-clean: # remove the unnecessary files from the build folder
-	rm -f build/*.o build/*.elf
+clean: 
+	rm build/*.o build/*.elf
 
+remove: 
+	rm -rf build
+	rm -rf pi_files
 final: $(STDFILES) $(IMG) # add the necessary files to the pi_files folder
 	mkdir -p pi_files
 	cp $^ $(DEST)
